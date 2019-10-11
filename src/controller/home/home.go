@@ -2,6 +2,7 @@ package config
 
 import(
 	"net/http"
+	conn "project_reservasi/src/config"
 )
 
 func HomeHandler(w http.ResponseWriter,r *http.Request){
@@ -9,10 +10,8 @@ func HomeHandler(w http.ResponseWriter,r *http.Request){
 
 	w.Write([]byte(message))
 
-	db, err := Connect()
-	if err != nil{
-		fmt.Println(err.Error())
-	}
+	var db = conn.Connect()
+	
 
 	defer db.Close()
 	

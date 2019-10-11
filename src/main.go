@@ -2,8 +2,8 @@ package main
 
 import(
 	"fmt"
-	i "reservasi/controller/home"
-	conn "reservasi/config"
+	i "project_reservasi/src/controller/home"
+	conn "project_reservasi/src/config"
 )
 
 func main(){
