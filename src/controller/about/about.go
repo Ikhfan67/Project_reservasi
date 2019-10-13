@@ -6,7 +6,7 @@ import(
 	"html/template"
 )
 
-func HomeHandler(w http.ResponseWriter,r *http.Request){
+func AboutHandler(w http.ResponseWriter,r *http.Request){
 	http.FileServer(http.Dir("assets"))
 	// var filepath = path.Join("views/home", "home.html")
 	// var tmpl, err = template.ParseFiles(filepath)
@@ -21,20 +21,13 @@ func HomeHandler(w http.ResponseWriter,r *http.Request){
 	}
 
 	var tmpl = template.Must(template.ParseFiles(
-		"views/home/home.html",
+		"views/about/about.html",
 		"views/head.html",
 	))
 
-	var err = tmpl.ExecuteTemplate(w, "home", data)
+	var err = tmpl.ExecuteTemplate(w, "about", data)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
-
-	
-
-	// err = tmpl.Execute(w, data)
-	// if err != nil {
-	// 	http.Error(w, err.Error(), http.StatusInternalServerError)
-	// }
 	
 }
