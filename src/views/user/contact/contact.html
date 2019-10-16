@@ -1,0 +1,112 @@
+{{define "contact"}}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {{template "head"}}    
+  </head>
+  <body>
+    {{template "top"}}
+	  
+	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+	<div class="container">
+		<a class="navbar-brand" href="index.html">Maknyus</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="oi oi-menu"></span> Menu
+		</button>
+
+		<div class="collapse navbar-collapse" id="ftco-nav">
+		<ul class="navbar-nav ml-auto">
+			<li class="nav-item"><a href="/home" class="nav-link">Home</a></li>
+			<li class="nav-item"><a href="/about" class="nav-link">About</a></li>
+			<li class="nav-item"><a href="/menu" class="nav-link">Menu</a></li>
+			<li class="nav-item active"><a href="/contact" class="nav-link">Contact</a></li>
+			<li class="nav-item cta"><a href="/reservasi" class="nav-link">Book a table</a></li>
+		</ul>
+		</div>
+	</div>
+	</nav>
+    
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('image/bg_3.jpg');" data-stellar-background-ratio="0.5">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-end justify-content-center">
+          <div class="col-md-9 ftco-animate text-center">
+            <h1 class="mb-2 bread">Contact Us</h1>
+            <p class="breadcrumbs"><span class="mr-2"><a href="/home">Home <i class="fas fa-arrow-right"></i></a></span> <span>Contact <i class="fas fa-arrow-right"></i></span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+	
+	<section class="ftco-section contact-section bg-light">
+      <div class="container">
+        <div class="row d-flex contact-info">
+          <div class="col-md-12 mb-4">
+            <h2 class="h4 font-weight-bold">Contact Information</h2>
+          </div>
+          <div class="w-100"></div>
+          <div class="col-md-3 d-flex">
+          	<div class="dbox">
+	            <p><span>Address :</span> Jl. Ampera Raya Blok C No.25 Rt.3/Rw.6 Cilandak Timur, Jakarta Selatan`</p>
+            </div>
+          </div>
+          <div class="col-md-3 d-flex">
+          	<div class="dbox">
+	            <p><span>Phone:</span> <a href="tel://1234567920">+62 877 8101 7042</a></p>
+            </div>
+          </div>
+          <div class="col-md-3 d-flex">
+          	<div class="dbox">
+	            <p><span>Email :</span> <a href="mailto:info@yoursite.com">MaknyusResto@gmail.com</a></p>
+            </div>
+          </div>
+          <div class="col-md-3 d-flex">
+          	<div class="dbox">
+	            <p><span>Website :</span> <a href="#">MaknyusResto.com</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+	<section class="ftco-section ftco-no-pt ftco-no-pb contact-section">
+		<div class="container">
+			<div class="row d-flex align-items-stretch no-gutters">
+				<div class="col-md-6 p-5 order-md-last">
+					<h2 class="h4 mb-5 font-weight-bold">Contact Us</h2>
+					<form action="#">
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="Your Name">
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="Your Email">
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="Subject">
+						</div>
+						<div class="form-group">
+							<textarea name="" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
+						</div>
+						<div class="form-group">
+							<input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
+						</div>
+					</form>
+				</div>
+				<div class="col-md-6 d-flex align-items-stretch">
+					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.837909080781!2d106.81425931471706!3d-6.2850269954510685!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f1f614bf93e9%3A0xbcf2cf974df7b19f!2sFe%20Cafe%20Ampera!5e0!3m2!1sid!2sid!4v1571042459809!5m2!1sid!2sid" width="600" height="700" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+				</div>
+			</div>
+		</div>
+	</section>
+		
+	{{template "section_instagram"}}
+
+    {{template "footer"}}
+
+  	<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+  	{{template "script"}}  
+    
+  </body>
+</html>
+{{end}}

@@ -10,7 +10,7 @@ import (
 
 func Connect() *sql.DB{
 	
-	db, err := sql.Open("mysql", "root:@tcp(localhost:127.0.0.1:3306)/dbname")
+	db, err := sql.Open("mysql", "root:@tcp(localhost:127.0.0.1:3306)/reservasi")
 	if err != err{
 		log.Fatal(err)
 	}
