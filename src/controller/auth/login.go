@@ -1,14 +1,19 @@
 package auth
 
-import(
+import (
 	"net/http"
-	"fmt"
+	// "fmt"
+	// "log"
 	"html/template"
-	"database/sql"
+	// "database/sql"
 
+	"github.com/kataras/go-sessions"
 	// "github.com/kataras/go-sessions"
-	// "golang.org/x/crypto/bcrypt"
+	"golang.org/x/crypto/bcrypt"
+	// q "project_reservasi/src/controller/query"
+	conn "project_reservasi/src/config"
 	mo "project_reservasi/src/model"
+
 )
 
 func LoginHandler(w http.ResponseWriter,r *http.Request){
@@ -26,54 +31,45 @@ func LoginHandler(w http.ResponseWriter,r *http.Request){
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
-
-	// session := sessions.Start(w, r)
-	// if len(session.GetString("username")) != 0 {
-	// 	http.Redirect(w, r, "/admin", 302)
-	// }
-	// if r.Method != "POST" {
-	// 	http.ServeFile(w, r, "views/auth/login.html")
-	// 	fmt.Println("wrong")
-	// 	return
-	// }
-	// username := r.FormValue("username")
-	// password := r.FormValue("password")
-
-	// users := QueryUser(username)
-
-	// //deskripsi dan compare password
-	// var password_tes = bcrypt.CompareHashAndPassword([]byte(users.Password), []byte(password))
-
-	// if password_tes == nil {
-	// 	//login success
-	// 	session := sessions.Start(w, r)
-	// 	session.Set("username", users.Username)
-	// 	http.Redirect(w, r, "/admin", 302)
-	// } else {
-	// 	//login failed
-	// 	http.Redirect(w, r, "/login", 302)
-	// }
-	
 }
 
-var db *sql.DB
-var err error
+func Login(w http.ResponseWriter,r *http.Request){
+	db := conn.Connect()
+    session := sessions.Start(w, r)
+	if len(session.GetString("username")) != 0 {
+		http.Redirect(w, r, "/", 302)
+	}
+	defer db.Close()
 
-func QueryUser(username string) mo.User {
+	username := r.FormValue("username")
+	password := r.FormValue("password")
+
+	// fmt.Println(username)
+	// fmt.Println(password)
+
 	var users = mo.User{}
-	err := db.QueryRow(`
+	err = db.QueryRow(`
 		SELECT id, 
-		username,
+		username, 
 		password 
-		FROM users WHERE username=?
+		FROM user WHERE username=?
 		`, username).
 		Scan(
 			&users.Id,
 			&users.Username,
 			&users.Password,
 		)
-		if err != nil {
-			fmt.Println(err)
-		}
-	return users
+
+	var password_tes = bcrypt.CompareHashAndPassword([]byte(users.Password), []byte(password))
+
+	if password_tes == nil {
+		//login success
+		session := sessions.Start(w, r)
+		session.Set("username", users.Username)
+		http.Redirect(w, r, "/loginadmin", 302)
+	} else {
+		//login failed
+		http.Redirect(w, r, "/admin", 302)
+	}
+
 }

@@ -3,17 +3,15 @@ package home
 import(
 	"net/http"
 	// "path"
+	// "fmt"
 	"html/template"
+	
+
 )
+
 
 func HomeHandler(w http.ResponseWriter,r *http.Request){
 	http.FileServer(http.Dir("assets"))
-	// var filepath = path.Join("views/home", "home.html")
-	// var tmpl, err = template.ParseFiles(filepath)
-	// if err != nil {
-	// 	http.Error(w, err.Error(), http.StatusInternalServerError)
-	// 	return
-	// }
 
 	var data = map[string]interface{}{
 		"title": "Learning Golang Web",
@@ -30,7 +28,6 @@ func HomeHandler(w http.ResponseWriter,r *http.Request){
 		"views/user/section/number.html",
 		"views/user/section/service.html",
 		"views/user/section/menu.html",
-		"views/user/section/reservasi.html",
 		"views/user/section/testimoni.html",
 		"views/user/section/instagram.html",
 	))
@@ -39,12 +36,5 @@ func HomeHandler(w http.ResponseWriter,r *http.Request){
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
-
-	
-
-	// err = tmpl.Execute(w, data)
-	// if err != nil {
-	// 	http.Error(w, err.Error(), http.StatusInternalServerError)
-	// }
 	
 }

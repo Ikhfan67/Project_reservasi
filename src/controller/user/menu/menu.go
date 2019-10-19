@@ -27,7 +27,6 @@ func MenuHandler(w http.ResponseWriter,r *http.Request){
 		"views/user/atribut/script.html",
 		"views/user/atribut/footer.html",
 		"views/user/section/menu.html",
-		"views/user/section/reservasi.html",
 	))
 
 	var err = tmpl.ExecuteTemplate(w, "menu", data)
